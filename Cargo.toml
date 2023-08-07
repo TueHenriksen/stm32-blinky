@@ -1,0 +1,16 @@
+[package]
+name = "stm32-blinky"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.7.7"                                                    # Access to the generic ARM peripherals
+cortex-m-rt = "0.7.3"                                                 # Startup code for the ARM Core
+panic-halt = "^0.2.0"                                                 # Panic handler
+stm32f7xx-hal = { version = "0.7.0", features = ["stm32f746", "rt"] }
+
+[profile.release]
+opt-level = 'z' # turn on maximum optimizations. We only have 64kB
+lto = true      # Link-time-optimizations for further size reduction
